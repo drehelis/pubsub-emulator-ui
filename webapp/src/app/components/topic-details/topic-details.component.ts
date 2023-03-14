@@ -28,9 +28,13 @@ export class TopicDetailsComponent implements OnInit {
     console.log("valueField: ", this.valueField.value)
 
     let attr = {
-      rawjson: "",
-      [this.keyField.value]: this.valueField.value
+      rawjson: ""
     }
+
+    if (this.keyField.value && this.valueField.value) {
+      Object.assign(attr, { [this.keyField.value]: this.valueField.value });
+    }
+
     this.onMessagePublish.emit({ topic: this.topic!, message: this.inputField.value, attributes: attr })
     this.inputField.reset()
   }
