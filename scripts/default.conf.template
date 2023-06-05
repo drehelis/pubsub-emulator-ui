@@ -5,6 +5,8 @@ upstream emulator {
 server {
 	listen 80 default_server;
 
+	large_client_header_buffers 4 32k;
+
 	gzip on;
 	gzip_min_length 1000;
 	gzip_types text/plain text/xml application/javascript text/css;
